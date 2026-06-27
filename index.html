@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DipIFR Ch.1 — Regulatory Framework, Sustainability & Ethics</title>
+<style>
+:root {
+  --deep:#0A1628;--navy:#0D2545;--blue:#1B4F8A;--accent:#C8962B;--gold:#E8B84B;
+  --teal:#1A7A6E;--red:#C0392B;--green:#1E7E4A;--purple:#5B2C8D;
+  --light:#F5F7FA;--white:#FFFFFF;--text:#1A1A2E;--muted:#6B7280;--border:#D1D9E6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:15px}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--light);color:var(--text);line-height:1.7}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;background:var(--deep);z-index:999;border-bottom:2px solid var(--accent);box-shadow:0 2px 20px rgba(0,0,0,.4)}
+.nav-inner{display:flex;align-items:center;gap:4px;padding:8px 20px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-brand{color:var(--gold)!important;font-size:13px!important;font-weight:900!important;border-right:1px solid #334155;padding-right:14px!important;margin-right:4px;white-space:nowrap}
+.nav-inner a{color:#CBD5E1;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.5px;white-space:nowrap;padding:5px 10px;border-radius:4px;transition:.2s;text-transform:uppercase}
+.nav-inner a:hover,.nav-inner a.active-nav{background:var(--accent);color:var(--deep)}
+
+/* ── LAYOUT ── */
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+section{scroll-margin-top:52px}
+.container{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* ── HERO ── */
+#hero{background:linear-gradient(135deg,var(--deep) 0%,var(--navy) 55%,#0F3460 100%);color:#fff;padding:80px 0 56px;margin-top:48px}
+.hero-grid{display:grid;grid-template-columns:1fr 300px;gap:36px;align-items:start}
+.badge{display:inline-block;background:var(--accent);color:var(--deep);font-size:10px;font-weight:800;letter-spacing:1px;padding:3px 12px;border-radius:20px;text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-size:2.4rem;font-weight:900;line-height:1.15;margin-bottom:8px}
+.hero-sub{color:#94A3B8;font-size:.95rem;margin-bottom:24px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.tag{padding:3px 11px;border-radius:20px;font-size:11px;font-weight:700}
+.tag-g{background:rgba(30,126,74,.25);color:#4ADE80;border:1px solid rgba(74,222,128,.3)}
+.tag-a{background:rgba(200,150,43,.25);color:var(--gold);border:1px solid rgba(232,184,75,.3)}
+.tag-b{background:rgba(27,79,138,.4);color:#93C5FD;border:1px solid rgba(147,197,253,.3)}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.meta-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px}
+.meta-card .lbl{font-size:9px;text-transform:uppercase;letter-spacing:.8px;color:#94A3B8;margin-bottom:3px}
+.meta-card .val{font-size:14px;font-weight:700;color:var(--gold)}
+.strat-box{margin-top:18px;background:rgba(200,150,43,.15);border:1px solid var(--accent);border-radius:10px;padding:13px 16px}
+.strat-box .sl{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--gold);margin-bottom:5px}
+.strat-box p{font-size:13px;color:#E2E8F0}
+
+/* ── ROADMAP PANEL ── */
+.roadmap{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:22px 18px}
+.roadmap h4{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#94A3B8;margin-bottom:16px;text-align:center}
+.rnode{display:block;text-align:center;text-decoration:none;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:9px 12px;font-size:11.5px;font-weight:700;margin-bottom:4px;transition:.2s;cursor:pointer}
+.rnode:hover{background:var(--accent);color:var(--deep)}
+.rarrow{text-align:center;color:var(--accent);font-size:16px;line-height:1.2;margin-bottom:4px}
+
+/* ── DIVIDER ── */
+.divider{height:3px;background:linear-gradient(90deg,var(--blue),var(--accent),var(--teal))}
+
+/* ── SECTION HEADERS ── */
+.sh{text-align:center;margin-bottom:32px}
+.sh h2{font-size:1.9rem;font-weight:800;color:var(--navy)}
+.sh.dark h2{color:#fff}
+.sh p{color:var(--muted);margin-top:5px;font-size:.9rem}
+.sh.dark p{color:#94A3B8}
+
+/* ── TOPIC HEADERS ── */
+.topic-hdr{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.tnum{width:40px;height:40px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0}
+.topic-hdr h2{font-size:1.5rem;font-weight:800;color:var(--navy)}
+
+/* ── CONTENT SECTIONS ── */
+.cs{padding:52px 0}
+.cs.alt{background:#fff}
+.cs.dark{background:var(--deep);color:#fff}
+.cs.navy{background:var(--navy);color:#fff}
+
+/* ── GRID HELPERS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+
+/* ── STYLED TABLES ── */
+.st{width:100%;border-collapse:collapse;border-radius:10px;overflow:hidden;margin:14px 0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.st thead{background:var(--navy);color:#fff}
+.st th{padding:11px 13px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.6px}
+.st td{padding:10px 13px;font-size:13.5px;border-bottom:1px solid var(--border)}
+.st tbody tr:hover{background:#F8FAFC}
+.st tbody tr:last-child td{border:none}
+
+/* ── EXPLAIN CARDS ── */
+.ec{border-radius:12px;padding:18px}
+.ec-en{background:#EFF6FF;border-left:4px solid var(--blue)}
+.ec-ar{background:#FFF7ED;border-left:4px solid var(--accent);direction:rtl;font-family:Georgia,serif;line-height:1.9}
+.ec h4{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:7px}
+
+/* ── INFO BOXES ── */
+.why-box{background:#F0FDF4;border:1px solid #86EFAC;border-radius:10px;padding:14px 16px;margin:14px 0}
+.why-box h4{color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
+.exam-box{background:#FFF1F2;border:1px solid #FECACA;border-radius:10px;padding:14px 16px;margin:14px 0}
+.exam-box h4{color:var(--red);font-size:11px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
+
+/* ── CALLOUTS ── */
+.co{border-radius:10px;padding:14px 16px}
+.co h5{font-size:10px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.co-key{background:#EFF6FF;border-left:4px solid var(--blue)}.co-key h5{color:var(--blue)}
+.co-alert{background:#FEF2F2;border-left:4px solid var(--red)}.co-alert h5{color:var(--red)}
+.co-tip{background:#F0FDF4;border-left:4px solid var(--green)}.co-tip h5{color:var(--green)}
+.co-star{background:#FFFBEB;border-left:4px solid var(--accent)}.co-star h5{color:#B45309}
+.co p,.co ul{font-size:13px;color:#374151}
+.co ul{padding-left:14px}.co li{margin-bottom:3px}
+
+/* ── MNEMONIC ── */
+.mn{background:linear-gradient(135deg,var(--purple),#7C3AED);color:#fff;border-radius:14px;padding:22px;margin:18px 0}
+.mn h4{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#DDD6FE;margin-bottom:10px}
+.mn-word{font-size:1.9rem;font-weight:900;letter-spacing:2px;margin-bottom:10px;color:#FDE68A}
+.mn-line{display:flex;align-items:baseline;gap:10px;margin-bottom:5px}
+.mn-l{font-size:1.3rem;font-weight:900;color:#FDE68A;width:22px;flex-shrink:0}
+.mn-m{font-size:13px;color:#EDE9FE}
+.mn-sub{margin-top:10px;font-size:11.5px;color:#DDD6FE}
+
+/* ── PROCESS STEPS ── */
+.step{display:flex;align-items:center;gap:14px;background:#fff;border-radius:10px;padding:14px 16px;border-left:4px solid var(--blue);box-shadow:0 1px 5px rgba(0,0,0,.06);margin-bottom:10px}
+.step-n{width:33px;height:33px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex-shrink:0}
+.step p{font-size:13.5px}
+
+/* ── RISK CARDS ── */
+.risk-card{border-radius:12px;padding:18px}
+.risk-phys{background:#FFF7ED;border-left:4px solid var(--accent)}
+.risk-trans{background:#EFF6FF;border-left:4px solid var(--blue)}
+.risk-card h4{font-size:11px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px}
+.risk-card ul{padding-left:14px;font-size:13.5px;line-height:1.9}
+
+/* ── MAP CARDS ── */
+.mc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px}
+.mc h3{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--gold);margin-bottom:14px}
+.mi{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;font-size:13px}
+.mi-ic{font-size:15px;flex-shrink:0;margin-top:2px}
+.freq-bar{display:flex;gap:3px;margin-top:4px}
+.fd{width:8px;height:8px;border-radius:50%}
+.don{background:var(--gold)}.doff{background:rgba(255,255,255,.15)}
+
+/* ── PASS CARDS ── */
+.pc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:20px}
+.pc h3{color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
+.pi{display:flex;gap:8px;align-items:flex-start;margin-bottom:9px;font-size:13px;color:#CBD5E1}
+
+/* ── CRITICAL BANNER ── */
+.crit-banner{background:linear-gradient(135deg,#C0392B,#8B0000);color:#fff;border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:13.5px}
+
+/* ── QUIZ / QUESTIONS ── */
+.q-set{margin-bottom:36px}
+.q-set h3{font-size:.95rem;font-weight:800;color:var(--navy);border-bottom:2px solid var(--border);padding-bottom:7px;margin-bottom:16px}
+.qc{background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px;transition:.2s}
+.qc:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.qnum{font-size:10px;font-weight:800;color:var(--blue);text-transform:uppercase;margin-bottom:5px}
+.qtext{font-size:14px;font-weight:600;margin-bottom:10px;line-height:1.5}
+.opt{padding:7px 11px;border-radius:6px;margin:3px 0;font-size:13px;cursor:pointer;border:1px solid var(--border);background:#fff;transition:.15s;display:flex;gap:7px;align-items:flex-start;user-select:none}
+.opt:hover:not(.locked){border-color:var(--blue);background:#EFF6FF}
+.opt.correct{background:#D1FAE5;border-color:var(--green);color:var(--green);font-weight:600}
+.opt.wrong{background:#FEE2E2;border-color:var(--red);color:var(--red)}
+.opt.locked{cursor:default}
+.show-btn{background:var(--blue);color:#fff;border:none;padding:7px 14px;border-radius:6px;cursor:pointer;font-size:11.5px;font-weight:700;margin-top:7px;transition:.2s}
+.show-btn:hover{background:var(--navy)}
+.ans-reveal{display:none;margin-top:10px;padding:11px 13px;background:#F0FDF4;border-radius:8px;border:1px solid #86EFAC;font-size:13px;line-height:1.7}
+.ans-reveal.shown{display:block}
+.score-bar{background:rgba(255,255,255,.1);border-radius:8px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:16px;color:#fff}
+.score-num{font-size:2rem;font-weight:900;color:var(--gold)}
+
+/* ── FLASHCARDS ── */
+#flash-section{background:var(--deep);padding:52px 0}
+.fc-controls{display:flex;gap:10px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}
+.fc-btn{padding:8px 20px;border-radius:20px;border:2px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-size:12px;font-weight:700;cursor:pointer;transition:.2s}
+.fc-btn:hover,.fc-btn.active{background:var(--accent);border-color:var(--accent);color:var(--deep)}
+.fc-stage{display:flex;flex-direction:column;align-items:center;gap:16px}
+.fc-card-wrap{perspective:1000px;width:min(520px,90vw);height:200px;cursor:pointer}
+.fc-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:.55s}
+.fc-card-wrap.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;justify-content:center}
+.fc-front{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff}
+.fc-back{background:var(--accent);color:var(--deep);transform:rotateY(180deg)}
+.fc-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.9px;opacity:.6;margin-bottom:7px}
+.fc-txt{font-size:14.5px;font-weight:600;line-height:1.55}
+.fc-nav{display:flex;gap:12px;align-items:center}
+.fc-nav button{width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:17px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
+.fc-nav button:hover{background:var(--accent);border-color:var(--accent);color:var(--deep)}
+.fc-counter{color:#94A3B8;font-size:13px;min-width:60px;text-align:center}
+.fc-hint{color:#94A3B8;font-size:11.5px;margin-top:4px}
+
+/* ── REVISION ── */
+.rev-tabs{display:flex;gap:7px;margin-bottom:20px;flex-wrap:wrap}
+.rt{padding:7px 16px;border-radius:20px;border:2px solid var(--border);background:#fff;font-size:12px;font-weight:700;cursor:pointer;transition:.2s}
+.rt.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.rpanel{display:none}
+.rpanel.active{display:block}
+.rev-card{background:var(--light);border-radius:12px;padding:22px}
+.rev-title{font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:14px;border-bottom:2px solid var(--accent);padding-bottom:7px}
+.ri{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px dashed var(--border);font-size:13.5px}
+.ri:last-child{border:none}
+.rb{color:var(--accent);font-weight:900;font-size:15px;flex-shrink:0}
+.emergency{background:linear-gradient(135deg,var(--deep),var(--navy));color:#fff;border-radius:16px;padding:26px}
+.emergency h3{font-size:1.1rem;font-weight:900;color:var(--gold);margin-bottom:16px}
+.em-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px}
+.em-col h4{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--gold);margin-bottom:7px}
+.em-col p{color:#CBD5E1;line-height:2}
+
+/* ── TOC TABLE ── */
+.toc-t{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.toc-t thead{background:var(--navy);color:#fff}
+.toc-t th{padding:12px 14px;text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.7px}
+.toc-t tbody tr{border-bottom:1px solid var(--border);transition:.15s}
+.toc-t tbody tr:hover{background:#EFF6FF}
+.toc-t td{padding:11px 14px;font-size:13px}
+.toc-t td a{color:var(--blue);font-weight:700;text-decoration:none;cursor:pointer}
+.toc-t td a:hover{text-decoration:underline}
+.stars{color:var(--accent);font-size:12px}
+.ib{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700}
+.ib-h{background:#FEE2E2;color:#991B1B}
+.ib-m{background:#FEF3C7;color:#92400E}
+.ib-l{background:#D1FAE5;color:#065F46}
+.marks{font-weight:800;color:var(--blue)}
+
+/* ── PROGRESS TRACKER ── */
+.progress-wrap{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.prog-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#94A3B8}
+.prog-bar-outer{flex:1;min-width:120px;height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden}
+.prog-bar-inner{height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:4px;transition:.5s}
+.prog-pct{font-size:13px;font-weight:800;color:var(--gold)}
+.topic-check{display:flex;gap:6px;align-items:center;cursor:pointer;font-size:12px;color:#CBD5E1;padding:3px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.1);transition:.2s}
+.topic-check:hover{background:rgba(255,255,255,.07)}
+.topic-check.done{background:rgba(30,126,74,.2);border-color:rgba(74,222,128,.3);color:#4ADE80}
+.chk{width:14px;height:14px;border-radius:3px;border:2px solid currentColor;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900}
+
+/* ── ADVAN/DISADV ── */
+.av{background:#F0FDF4;border-radius:12px;padding:18px;border-left:4px solid var(--green)}
+.av h4{color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}
+.dv{background:#FEF2F2;border-radius:12px;padding:18px;border-left:4px solid var(--red)}
+.dv h4{color:var(--red);font-size:11px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}
+.av ul,.dv ul{padding-left:14px;font-size:13.5px;color:#374151;line-height:1.9}
+
+/* ── MCQ QUIZ MODE ── */
+.quiz-mode-wrap{display:none}
+.quiz-mode-wrap.active{display:block}
+.quiz-mode-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:gap}
+.quiz-progress{font-size:13px;color:var(--muted)}
+.quiz-result-box{background:linear-gradient(135deg,var(--navy),var(--deep));color:#fff;border-radius:14px;padding:28px;text-align:center;margin-top:20px}
+.quiz-result-box h3{font-size:1.4rem;font-weight:900;color:var(--gold);margin-bottom:8px}
+.quiz-result-box p{color:#CBD5E1;margin-bottom:16px}
+.retry-btn{background:var(--accent);color:var(--deep);border:none;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;transition:.2s}
+.retry-btn:hover{background:var(--gold)}
+
+/* ── ABOUT MODAL ── */
+.about-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:20px;background:rgba(255,255,255,.1);font-size:11px;color:#CBD5E1;margin-bottom:12px;border:1px solid rgba(255,255,255,.15)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .g2,.g3,.hero-grid,.em-grid,.meta-grid{grid-template-columns:1fr}
+  .hero-title{font-size:1.7rem}
+  .roadmap{display:none}
+  .fc-card-wrap{height:220px}
+  .sh h2{font-size:1.4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">📘 DipIFR Ch.1</span>
+    <a onclick="goPage('home')" data-p="home" class="active-nav">Home</a>
+    <a onclick="goPage('content')" data-p="content">Content</a>
+    <a onclick="goPage('quiz')" data-p="quiz">Quiz</a>
+    <a onclick="goPage('flashcards')" data-p="flashcards">Flashcards</a>
+    <a onclick="goPage('revision')" data-p="revision">Revision</a>
+    <a onclick="goPage('passguide')" data-p="passguide">Pass Guide</a>
+  </div>
+</nav>
+
+<!-- ══ HOME PAGE ══ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="badge">📘 ACCA DipIFR · Chapter 1</div>
+          <h1 class="hero-title">The Regulatory Framework,<br>Sustainability &amp; Ethics</h1>
+          <p class="hero-sub">Master the foundation of global IFRS — your passport to every other standard.</p>
+          <div class="tags">
+            <span class="tag tag-g">✅ Difficulty: Medium</span>
+            <span class="tag tag-a">⏱ Study Time: 3–4 hrs</span>
+            <span class="tag tag-b">📊 Exam Weight: A1 + A2 + C9</span>
+          </div>
+          <div class="meta-grid">
+            <div class="meta-card"><div class="lbl">Exam Frequency</div><div class="val">Every Sitting</div></div>
+            <div class="meta-card"><div class="lbl">Ethics Marks (Q2)</div><div class="val">Up to 5 Marks</div></div>
+            <div class="meta-card"><div class="lbl">Most Tested Area</div><div class="val">Ethics Scenarios</div></div>
+            <div class="meta-card"><div class="lbl">Common Mistake</div><div class="val">Listing ≠ Applying</div></div>
+          </div>
+          <div class="strat-box">
+            <div class="sl">⚡ PASS STRATEGY</div>
+            <p>Ethics appears in <strong style="color:var(--gold)">every exam Q2</strong> for 5 marks. Apply principles to the scenario — don't just list them. IASB/ISSB structure is theory worth easy marks if memorised.</p>
+          </div>
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <button onclick="goPage('content')" style="background:var(--accent);color:var(--deep);border:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;transition:.2s">📖 Start Learning</button>
+            <button onclick="goPage('quiz')" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s">📝 Take Quiz</button>
+            <button onclick="goPage('flashcards')" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s">🃏 Flashcards</button>
+          </div>
+        </div>
+
+        <!-- Roadmap -->
+        <div class="roadmap">
+          <h4>📍 Learning Roadmap</h4>
+          <div onclick="goPage('content');scrollToId('s1')" class="rnode">🌍 Foundation<br><small style="font-weight:400;font-size:10px">Why IFRS Exists</small></div>
+          <div class="rarrow">↓</div>
+          <div onclick="goPage('content');scrollToId('s1')" class="rnode">🏛 IASB Structure<br><small style="font-weight:400;font-size:10px">Who Makes Standards</small></div>
+          <div class="rarrow">↓</div>
+          <div onclick="goPage('content');scrollToId('s2')" class="rnode">⚙️ Due Process<br><small style="font-weight:400;font-size:10px">How Standards Are Made</small></div>
+          <div class="rarrow">↓</div>
+          <div onclick="goPage('content');scrollToId('s3')" class="rnode">🌿 ISSB &amp; IFRS S1/S2<br><small style="font-weight:400;font-size:10px">Sustainability</small></div>
+          <div class="rarrow">↓</div>
+          <div onclick="goPage('content');scrollToId('s4')" class="rnode">⚖️ Ethics<br><small style="font-weight:400;font-size:10px">5 Principles + Threats</small></div>
+          <div class="rarrow">↓</div>
+          <div onclick="goPage('quiz')" class="rnode">📝 Exam Questions<br><small style="font-weight:400;font-size:10px">Practice &amp; Pass</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TOC -->
+  <section style="background:#fff;padding:52px 0">
+    <div class="container">
+      <div class="sh"><h2>📋 Table of Contents</h2><p>Click any topic to jump to that section.</p></div>
+      <table class="toc-t">
+        <thead><tr><th>#</th><th>Topic</th><th>Difficulty</th><th>Importance</th><th>Frequency</th><th>Marks</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><a onclick="goPage('content');scrollToId('s1')">Need for IFRS &amp; Globalisation</a></td><td><span class="stars">★★☆☆☆</span></td><td><span class="ib ib-m">Medium</span></td><td>Occasional</td><td class="marks">2–3</td></tr>
+          <tr><td>2</td><td><a onclick="goPage('content');scrollToId('s1')">IASB Structure &amp; IFRS Foundation</a></td><td><span class="stars">★★★☆☆</span></td><td><span class="ib ib-m">Medium</span></td><td>Regular</td><td class="marks">3–5</td></tr>
+          <tr><td>3</td><td><a onclick="goPage('content');scrollToId('s2')">Due Process &amp; Standard Setting</a></td><td><span class="stars">★★☆☆☆</span></td><td><span class="ib ib-m">Medium</span></td><td>Occasional</td><td class="marks">2–4</td></tr>
+          <tr><td>4</td><td><a onclick="goPage('content');scrollToId('s3')">ISSB &amp; IFRS S1 (Sustainability)</a></td><td><span class="stars">★★★★☆</span></td><td><span class="ib ib-h">High</span></td><td>Growing</td><td class="marks">5–8</td></tr>
+          <tr><td>5</td><td><a onclick="goPage('content');scrollToId('s3')">IFRS S2 (Climate Disclosures)</a></td><td><span class="stars">★★★★☆</span></td><td><span class="ib ib-h">High</span></td><td>Growing</td><td class="marks">4–6</td></tr>
+          <tr><td>6</td><td><a onclick="goPage('content');scrollToId('s4')">Five Ethical Principles (IESBA)</a></td><td><span class="stars">★★★☆☆</span></td><td><span class="ib ib-h">🔴 Critical</span></td><td><strong>Every Exam</strong></td><td class="marks"><strong>5</strong></td></tr>
+          <tr><td>7</td><td><a onclick="goPage('content');scrollToId('s4')">Threats &amp; Safeguards</a></td><td><span class="stars">★★★☆☆</span></td><td><span class="ib ib-h">High</span></td><td>Every Exam</td><td class="marks">3–5</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STUDY MAP -->
+  <section class="cs dark">
+    <div class="container">
+      <div class="sh dark"><h2>🗺 Study Map</h2><p>Know what to memorise, understand, and prioritise before diving in.</p></div>
+      <div class="g3">
+        <div class="mc">
+          <h3>🧠 Must MEMORISE</h3>
+          <div class="mi"><span class="mi-ic">💾</span><div>5 Ethical Principles: Integrity, Objectivity, Professional Competence &amp; Due Care, Confidentiality, Professional Behaviour</div></div>
+          <div class="mi"><span class="mi-ic">💾</span><div>5 Threat Categories: Self-interest, Self-review, Advocacy, Familiarity, Intimidation</div></div>
+          <div class="mi"><span class="mi-ic">💾</span><div>4 Due Process Steps: Advisory → Discussion Paper → Exposure Draft → Final Standard</div></div>
+          <div class="mi"><span class="mi-ic">💾</span><div>IFRS Foundation: Monitoring Board → Trustees → IASB/ISSB</div></div>
+          <div class="mi"><span class="mi-ic">💾</span><div>IFRS S1 four areas: Governance, Strategy, Risk Mgmt, Metrics &amp; Targets</div></div>
+        </div>
+        <div class="mc">
+          <h3>💡 Must UNDERSTAND</h3>
+          <div class="mi"><span class="mi-ic">🔍</span><div>Why a single global standard benefits cross-border capital markets and investors</div></div>
+          <div class="mi"><span class="mi-ic">🔍</span><div>Why principles-based IFRS vs rules-based US GAAP requires professional judgement</div></div>
+          <div class="mi"><span class="mi-ic">🔍</span><div>How threats to ethical principles must be identified, evaluated and addressed</div></div>
+          <div class="mi"><span class="mi-ic">🔍</span><div>Purpose of IFRS S2 climate disclosures: physical vs transition risks</div></div>
+          <div class="mi"><span class="mi-ic">🔍</span><div>Why you must APPLY ethics to scenarios — not just list principles</div></div>
+        </div>
+        <div class="mc">
+          <h3>📊 Exam Frequency</h3>
+          <div class="mi"><span class="mi-ic">🔴</span><div>Ethics scenario (Q2) — Every exam<div class="freq-bar"><div class="fd don"></div><div class="fd don"></div><div class="fd don"></div><div class="fd don"></div><div class="fd don"></div></div></div></div>
+          <div class="mi"><span class="mi-ic">🟠</span><div>ISSB / IFRS S1 &amp; S2 — Growing fast<div class="freq-bar"><div class="fd don"></div><div class="fd don"></div><div class="fd don"></div><div class="fd don"></div><div class="fd doff"></div></div></div></div>
+          <div class="mi"><span class="mi-ic">🟡</span><div>IASB structure — Occasional<div class="freq-bar"><div class="fd don"></div><div class="fd don"></div><div class="fd doff"></div><div class="fd doff"></div><div class="fd doff"></div></div></div></div>
+          <div class="mi"><span class="mi-ic">🟢</span><div>Due process steps — Lower priority<div class="freq-bar"><div class="fd don"></div><div class="fd doff"></div><div class="fd doff"></div><div class="fd doff"></div><div class="fd doff"></div></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /home -->
+
+<!-- ══ CONTENT PAGE ══ -->
+<div id="page-content" class="page">
+  <div style="margin-top:48px"></div>
+
+  <!-- TOPIC 1 -->
+  <section id="s1" class="cs alt">
+    <div class="container">
+      <div class="topic-hdr"><div class="tnum">1</div><h2>IASB &amp; The Regulatory Framework</h2></div>
+      <div class="g2">
+        <div class="ec ec-en">
+          <h4>🇬🇧 English</h4>
+          <p>Globalisation means businesses operate and raise capital across borders. For investors to compare companies from different countries, they need <strong>one common accounting language</strong>. The IASB creates IFRS Accounting Standards to provide this. Without them, a company in Egypt and one in Germany would report profits completely differently — making investment decisions unreliable.</p>
+        </div>
+        <div class="ec ec-ar">
+          <h4 style="font-family:Segoe UI,sans-serif;direction:ltr">🇸🇦 شرح بالعربية</h4>
+          <p>العولمة جعلت الشركات تعمل وتجمع رأس المال عبر الحدود. لكي يتمكن المستثمرون من مقارنة الشركات من دول مختلفة، يحتاجون إلى <strong>لغة محاسبية موحدة</strong>. مجلس معايير المحاسبة الدولي (IASB) يضع معايير IFRS لتحقيق هذا الهدف.</p>
+        </div>
+      </div>
+      <div class="why-box">
+        <h4>❓ WHY Does IFRS Require This?</h4>
+        <p>Capital markets are global. Without uniform standards, capital markets become inefficient, cost of capital rises, and cross-border investment shrinks. A single standard creates <strong>transparency, comparability, and economic efficiency</strong> across all jurisdictions.</p>
+      </div>
+
+      <h3 style="margin:22px 0 14px;color:var(--navy)">IFRS Foundation Structure</h3>
+      <table class="st">
+        <thead><tr><th>Body</th><th>Role</th><th>Key Point</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Monitoring Board</strong></td><td>Public accountability of the Foundation</td><td>Capital markets authorities; formal link to public sector</td></tr>
+          <tr><td><strong>IFRS Foundation Trustees</strong></td><td>Governance, strategy, oversight</td><td>Appoint IASB/ISSB members; approve budget</td></tr>
+          <tr><td><strong>IASB</strong></td><td>Develop IFRS Accounting Standards</td><td>Independent; privately funded; 14+ members</td></tr>
+          <tr><td><strong>ISSB</strong></td><td>Develop IFRS Sustainability Standards</td><td>Formed 2021; first 2 standards June 2023</td></tr>
+          <tr><td><strong>IFRS Advisory Council</strong></td><td>Advises IASB, ISSB &amp; Trustees</td><td>Public meetings; diverse backgrounds</td></tr>
+          <tr><td><strong>Interpretations Committee</strong></td><td>Interprets existing IFRS Standards</td><td>Same authority as IFRS standards</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:22px 0 14px;color:var(--navy)">IFRS: Advantages vs Disadvantages</h3>
+      <div class="g2">
+        <div class="av">
+          <h4>✅ Advantages</h4>
+          <ul><li>Compare financial statements across borders</li><li>Facilitates cross-border stock exchange listing</li><li>Common accounting language for multinationals</li><li>Easier appraisal of foreign acquisition targets</li><li>Lower cost of capital via efficient markets</li></ul>
+        </div>
+        <div class="dv">
+          <h4>❌ Disadvantages</h4>
+          <ul><li>High implementation costs</li><li>Less detail vs US GAAP (rules-based)</li><li>Principles-based = more judgment required</li><li>US accountants lose litigation defence under GAAP</li><li>Transition disruption for countries with own standards</li></ul>
+        </div>
+      </div>
+
+      <div class="mn">
+        <h4>🧠 Memory Hack — IFRS Foundation Structure</h4>
+        <div class="mn-word">M · T · B · I</div>
+        <div class="mn-line"><span class="mn-l">M</span><span class="mn-m"><strong>M</strong>onitoring Board → Public accountability (top of pyramid)</span></div>
+        <div class="mn-line"><span class="mn-l">T</span><span class="mn-m"><strong>T</strong>rustees → Governance, appoint members, approve budget</span></div>
+        <div class="mn-line"><span class="mn-l">B</span><span class="mn-m"><strong>B</strong>oards (IASB + ISSB) → Develop standards independently</span></div>
+        <div class="mn-line"><span class="mn-l">I</span><span class="mn-m"><strong>I</strong>nterpretations Committee → Clarify &amp; interpret standards</span></div>
+        <div class="mn-sub">Think: Shareholders (Monitoring) → Board (Trustees) → Management (IASB/ISSB) → Legal (Interpretations)</div>
+      </div>
+
+      <div class="g2">
+        <div class="co co-key"><h5>📌 Key Takeaways</h5><ul><li>IFRS Foundation = not-for-profit, private sector</li><li>IASB = independent standard-setter</li><li>Standards do NOT apply to immaterial items</li><li>Standards are NOT retrospective</li></ul></div>
+        <div class="co co-alert"><h5>🚨 Exam Alert</h5><ul><li>IFRS Foundation has NO enforcement powers — enforcement is national</li><li>Prior to 2003 = IAS standards; from 2003 = IFRS standards</li><li>Both IAS and IFRS tested under "IFRS Accounting Standards"</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPIC 2 -->
+  <section id="s2" class="cs" style="background:var(--light)">
+    <div class="container">
+      <div class="topic-hdr"><div class="tnum" style="background:var(--teal)">2</div><h2>Developing IFRS Standards — The Due Process</h2></div>
+      <div class="g2">
+        <div class="ec ec-en">
+          <h4>🇬🇧 English</h4>
+          <p>IFRS standards follow a <strong>formal, transparent, public process</strong> so all global stakeholders can contribute. The process moves from advisory advice → discussion paper → exposure draft → final standard. This normally takes years.</p>
+        </div>
+        <div class="ec ec-ar">
+          <h4 style="font-family:Segoe UI,sans-serif;direction:ltr">🇸🇦 شرح بالعربية</h4>
+          <p>تتبع معايير IFRS <strong>عملية رسمية وشفافة وعلنية</strong> تضمن مشاركة جميع أصحاب المصلحة حول العالم. تبدأ بمشورة استشارية، ثم ورقة نقاش، ثم مسودة معرضة للتعليق، وأخيراً المعيار النهائي.</p>
+        </div>
+      </div>
+
+      <h3 style="margin:22px 0 14px;color:var(--navy)">The 4-Step Due Process</h3>
+      <div class="step"><div class="step-n" style="background:var(--blue)">1</div><p><strong>Advisory Committee</strong> — IASB establishes an advisory group; consultation with IFRS Advisory Council throughout</p></div>
+      <div class="step" style="border-color:var(--teal)"><div class="step-n" style="background:var(--teal)">2</div><p><strong>Discussion Paper</strong> — Published for public comment (exploring the issue broadly)</p></div>
+      <div class="step" style="border-color:var(--accent)"><div class="step-n" style="background:var(--accent);color:var(--deep)">3</div><p><strong>Exposure Draft (ED)</strong> — A near-final proposed standard for public comment (<strong>normally 120 days</strong>; minimum 30 days)</p></div>
+      <div class="step" style="border-color:var(--green)"><div class="step-n" style="background:var(--green)">4</div><p><strong>Final IFRS Accounting Standard</strong> — Issued after reviewing all comments received on the ED</p></div>
+
+      <div class="why-box" style="margin-top:20px">
+        <h4>❓ WHY This Process?</h4>
+        <p>Three underpinning principles: <strong>(a) Transparency</strong> — open, public process; <strong>(b) Full and fair consultation</strong> — all global perspectives considered; <strong>(c) Accountability</strong> — IASB explains decisions made. This legitimises standards internationally across 140+ countries.</p>
+      </div>
+      <div class="g2" style="margin-top:14px">
+        <div class="co co-alert"><h5>🚨 Exam Trap</h5><p>Draft Interpretations from the Interpretations Committee are exposed for <strong>90 days</strong> — NOT 120 days. Standard comment period = 120 days. Exceptional = 30 days.</p></div>
+        <div class="co co-key"><h5>📌 Must Remember</h5><ul><li>Scope limitations stated within each individual standard</li><li>Standards NOT applied to immaterial items</li><li>IASB is responsible for standard-setting (True — exam Q)</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPIC 3 -->
+  <section id="s3" class="cs alt">
+    <div class="container">
+      <div class="topic-hdr"><div class="tnum" style="background:var(--teal)">3</div><h2>ISSB, IFRS S1 &amp; IFRS S2 — Sustainability Disclosure</h2></div>
+      <div class="g2">
+        <div class="ec ec-en">
+          <h4>🇬🇧 English</h4>
+          <p>The world demands companies disclose not just profits, but how they affect the <strong>planet, society, and people</strong>. The ISSB (formed 2021) creates global sustainability disclosure standards. IFRS S1 covers all sustainability risks &amp; opportunities. IFRS S2 zooms in on climate. Both effective from <strong>1 January 2024</strong>.</p>
+        </div>
+        <div class="ec ec-ar">
+          <h4 style="font-family:Segoe UI,sans-serif;direction:ltr">🇸🇦 شرح بالعربية</h4>
+          <p>يطالب العالم الشركات بالإفصاح عن تأثيرها على <strong>البيئة والمجتمع والناس</strong>. معيار IFRS S1 يغطي جميع مخاطر الاستدامة، بينما يركز IFRS S2 على المناخ. كلاهما ساري من <strong>1 يناير 2024</strong>.</p>
+        </div>
+      </div>
+
+      <h3 style="margin:22px 0 14px;color:var(--navy)">IFRS S1 — Four Core Content Areas</h3>
+      <table class="st">
+        <thead><tr><th>Heading</th><th>Purpose</th><th>Key Disclosures</th></tr></thead>
+        <tbody>
+          <tr><td><strong>🏛 Governance</strong></td><td>Who oversees sustainability risks/opportunities</td><td>Which body is responsible; management's role in governance</td></tr>
+          <tr><td><strong>🎯 Strategy</strong></td><td>How sustainability affects business model &amp; plans</td><td>Risks &amp; opportunities expected to affect prospects; effects on business model</td></tr>
+          <tr><td><strong>⚠️ Risk Management</strong></td><td>How sustainability risks are identified, assessed &amp; monitored</td><td>Inputs used; scenario analysis; how risk effects are assessed</td></tr>
+          <tr><td><strong>📊 Metrics &amp; Targets</strong></td><td>Progress toward sustainability targets</td><td>Required ISSB metrics; entity's own metrics; definitions &amp; assumptions</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:24px 0 14px;color:var(--navy)">IFRS S2 — Climate Risk Types</h3>
+      <div class="g2">
+        <div class="risk-card risk-phys">
+          <h4 style="color:#B45309">🌡 Physical Risks</h4>
+          <p style="font-size:13.5px"><strong>Acute:</strong> Weather events — storms, floods, drought (sudden, event-driven)</p><br>
+          <p style="font-size:13.5px"><strong>Chronic:</strong> Long-term climate shifts — sea level rise, biodiversity loss (slow, systemic)</p><br>
+          <p style="font-size:12.5px;color:#92400E">Example: A coastal factory faces flooding risk (acute) and rising sea levels (chronic).</p>
+        </div>
+        <div class="risk-card risk-trans">
+          <h4 style="color:var(--blue)">🔄 Transition Risks</h4>
+          <p style="font-size:13.5px">Risks arising from <strong>moving toward a lower-carbon economy</strong>:</p>
+          <ul style="margin-top:8px"><li>New carbon taxes or regulations</li><li>Consumer shift to carbon-neutral alternatives</li><li>Stranded assets (e.g. oil reserves becoming unusable)</li><li>Changes in technology or market preferences</li></ul>
+        </div>
+      </div>
+
+      <div class="mn">
+        <h4>🧠 Memory Hack — IFRS S1 Core Content</h4>
+        <div class="mn-word">G · S · R · M</div>
+        <div class="mn-line"><span class="mn-l">G</span><span class="mn-m"><strong>G</strong>overnance — Who's in charge of sustainability?</span></div>
+        <div class="mn-line"><span class="mn-l">S</span><span class="mn-m"><strong>S</strong>trategy — How does it affect our plans?</span></div>
+        <div class="mn-line"><span class="mn-l">R</span><span class="mn-m"><strong>R</strong>isk Management — How do we identify &amp; manage risks?</span></div>
+        <div class="mn-line"><span class="mn-l">M</span><span class="mn-m"><strong>M</strong>etrics &amp; Targets — Are we hitting our goals?</span></div>
+        <div class="mn-sub">Easy phrase: <em>"Good Strategy Requires Measurement"</em></div>
+      </div>
+
+      <div class="g2">
+        <div class="co co-alert"><h5>🚨 ISSB Key Facts</h5><ul><li>ISSB formed: <strong>2021</strong></li><li>First 2 standards issued: <strong>June 2023</strong></li><li>Effective from: <strong>1 January 2024</strong></li><li>Early adoption permitted if both S1 + S2 applied together</li></ul></div>
+        <div class="co co-key"><h5>📌 Key Definitions</h5><p><strong>Impacts:</strong> Effect the entity has ON stakeholders/environment (GHG emissions, water usage)</p><br><p><strong>Dependencies:</strong> Entity's RELIANCE on stakeholders/environment (worker health, resource availability)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPIC 4 -->
+  <section id="s4" class="cs" style="background:var(--light)">
+    <div class="container">
+      <div class="topic-hdr"><div class="tnum" style="background:var(--red)">4</div><h2>Ethical &amp; Professional Principles — The 5 Fundamentals</h2></div>
+
+      <div class="crit-banner">
+        <strong>🔴 CRITICAL EXAM NOTE:</strong> Ethics appears in <strong>Question 2 of EVERY DipIFR exam</strong> for up to 5 marks. Candidates who simply list principles without applying them to the scenario score poorly. Always connect each principle to the specific facts given.
+      </div>
+
+      <div class="g2">
+        <div class="ec ec-en">
+          <h4>🇬🇧 English</h4>
+          <p>Professional accountants are bound by the IESBA Code of Ethics. This sets out <strong>5 fundamental principles</strong> they must uphold. When these principles face threats, the accountant must take steps to eliminate or reduce those threats to an acceptable level.</p>
+        </div>
+        <div class="ec ec-ar">
+          <h4 style="font-family:Segoe UI,sans-serif;direction:ltr">🇸🇦 شرح بالعربية</h4>
+          <p>يلتزم المحاسبون المهنيون بقواعد الأخلاقيات IESBA. تُحدد هذه القواعد <strong>خمسة مبادئ أخلاقية أساسية</strong>. عند تهديد هذه المبادئ يجب على المحاسب اتخاذ خطوات للقضاء عليها أو تخفيضها لمستوى مقبول.</p>
+        </div>
+      </div>
+
+      <h3 style="margin:22px 0 14px;color:var(--navy)">The 5 Fundamental Ethical Principles</h3>
+      <table class="st">
+        <thead><tr><th>Principle</th><th>Definition</th><th>Example Violation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. Integrity</strong></td><td>Straightforward and honest in all professional and business relationships</td><td>Preparing financial statements known to contain errors</td></tr>
+          <tr><td><strong>2. Objectivity</strong></td><td>Not compromising judgement due to bias, conflict of interest or undue influence</td><td>Approving a transaction that benefits a relative</td></tr>
+          <tr><td><strong>3. Professional Competence &amp; Due Care</strong></td><td>Maintain knowledge &amp; skills; act diligently per professional standards</td><td>Applying an outdated standard you haven't kept up with</td></tr>
+          <tr><td><strong>4. Confidentiality</strong></td><td>Respect confidentiality of information acquired through professional relationships</td><td>Sharing client data with a friend at a competitor</td></tr>
+          <tr><td><strong>5. Professional Behaviour</strong></td><td>Comply with laws and regulations; avoid conduct that discredits the profession</td><td>Making false claims about your qualifications</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:24px 0 14px;color:var(--navy)">The 5 Threats to Ethical Compliance</h3>
+      <table class="st">
+        <thead><tr><th>Threat</th><th>Definition</th><th>Real-World Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Self-interest</strong></td><td>Financial or other interest inappropriately influences judgement</td><td>Signing off accounts to protect a profit-related bonus</td></tr>
+          <tr><td><strong>Self-review</strong></td><td>Reviewing your own previous judgement without proper evaluation</td><td>Auditing financial statements you helped prepare</td></tr>
+          <tr><td><strong>Advocacy</strong></td><td>Promoting a client's position to the point objectivity is compromised</td><td>Aggressively defending a client's aggressive tax position</td></tr>
+          <tr><td><strong>Familiarity</strong></td><td>Too sympathetic to a client/employer due to close relationship</td><td>Not challenging a long-serving client's accounting estimates</td></tr>
+          <tr><td><strong>Intimidation</strong></td><td>Deterred from acting objectively by actual or perceived pressure</td><td>CEO threatening to dismiss the Finance Director if he reports a problem</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin:24px 0 14px;color:var(--navy)">Addressing Threats — The 3-Step Framework</h3>
+      <div class="step"><div class="step-n" style="background:var(--blue)">1</div><p><strong>IDENTIFY</strong> the threat to compliance with fundamental principles</p></div>
+      <div class="step" style="border-color:var(--accent)"><div class="step-n" style="background:var(--accent);color:var(--deep)">2</div><p><strong>EVALUATE</strong> the significance of the threat</p></div>
+      <div class="step" style="border-color:var(--green)"><div class="step-n" style="background:var(--green)">3</div><p><strong>ADDRESS</strong> by: (a) eliminating circumstances; (b) applying safeguards; (c) declining/ending the activity</p></div>
+
+      <div class="mn" style="margin-top:20px">
+        <h4>🧠 Memory Hack — The 5 Principles</h4>
+        <div class="mn-word">I · O · P · C · P</div>
+        <div style="font-size:12.5px;color:#DDD6FE;margin-bottom:10px"><em>"In Our Profession, Clients Protect"</em></div>
+        <div class="mn-line"><span class="mn-l">I</span><span class="mn-m"><strong>I</strong>ntegrity — Be honest, don't deceive</span></div>
+        <div class="mn-line"><span class="mn-l">O</span><span class="mn-m"><strong>O</strong>bjectivity — No bias or conflicts of interest</span></div>
+        <div class="mn-line"><span class="mn-l">P</span><span class="mn-m"><strong>P</strong>rofessional Competence &amp; Due Care — Stay up to date</span></div>
+        <div class="mn-line"><span class="mn-l">C</span><span class="mn-m"><strong>C</strong>onfidentiality — Don't share client secrets</span></div>
+        <div class="mn-line"><span class="mn-l">P</span><span class="mn-m"><strong>P</strong>rofessional Behaviour — Don't discredit the profession</span></div>
+        <div class="mn-sub">5 Threats: <strong>SSAFI</strong> — <em>Smart Students Avoid Failing Integrity</em></div>
+      </div>
+
+      <div class="g2">
+        <div class="co co-alert"><h5>🚨 Examiner Warning</h5><p>Candidates who list principles with NO link to the scenario get very few marks. You must say: <em>"This creates a self-interest threat to objectivity because [specific fact from scenario]..."</em></p></div>
+        <div class="co co-star"><h5>⭐ Exam Scenario Template</h5><p>Step 1: Name the principle threatened.<br>Step 2: Name the specific threat type.<br>Step 3: Explain WHY using scenario facts.<br>Step 4: Suggest what action to take.</p></div>
+      </div>
+    </div>
+  </section>
+</div><!-- /content -->
+
+<!-- ══ QUIZ PAGE ══ -->
+<div id="page-quiz" class="page">
+  <div style="margin-top:48px;background:#fff;padding:52px 0;min-height:80vh">
+    <div class="container">
+      <div class="sh"><h2>📝 Exam-Style Practice Questions</h2><p>Test your knowledge with MCQs, short answers, and full scenario questions.</p></div>
+
+      <!-- MCQ SECTION -->
+      <div class="q-set">
+        <h3>📌 Section A — Multiple Choice Questions</h3>
+        <div id="mcq-container"></div>
+      </div>
+
+      <!-- SHORT QUESTIONS -->
+      <div class="q-set">
+        <h3>📋 Section B — Short Answer Questions</h3>
+        <div class="qc">
+          <div class="qnum">Short Q 1</div>
+          <div class="qtext">Explain two advantages and two disadvantages of adopting IFRS Accounting Standards. (4 marks)</div>
+          <button class="show-btn" onclick="toggleAns(this)">Show Answer</button>
+          <div class="ans-reveal"><strong>Advantages (any 2):</strong><br>• Businesses can present financial statements on the same basis as foreign competitors (1 mark)<br>• Cross-border listing is facilitated, making it easier to raise capital internationally (1 mark)<br>• Multinationals can use a single company-wide accounting language (1 mark)<br><br><strong>Disadvantages (any 2):</strong><br>• High cost of implementing IFRS standards (1 mark)<br>• Less prescriptive than US GAAP — requires more professional judgement (1 mark)<br>• Some accountants may lose litigation protection under detailed national rules (1 mark)</div>
+        </div>
+        <div class="qc">
+          <div class="qnum">Short Q 2</div>
+          <div class="qtext">List the four steps of the IASB's due process for developing a new IFRS Accounting Standard. (4 marks)</div>
+          <button class="show-btn" onclick="toggleAns(this)">Show Answer</button>
+          <div class="ans-reveal">Step 1: IASB establishes an Advisory Committee to advise on issues (1 mark)<br>Step 2: IASB publishes a Discussion Paper for public comment (1 mark)<br>Step 3: IASB publishes an Exposure Draft — normally 120 days (1 mark)<br>Step 4: IASB reviews comments and issues the final IFRS Accounting Standard (1 mark)</div>
+        </div>
+        <div class="qc">
+          <div class="qnum">Short Q 3</div>
+          <div class="qtext">State the five fundamental ethical principles under the IESBA Code. (5 marks)</div>
+          <button class="show-btn" onclick="toggleAns(this)">Show Answer</button>
+          <div class="ans-reveal">1. <strong>Integrity</strong> — to be straightforward and honest in all professional and business relationships<br>2. <strong>Objectivity</strong> — not to compromise professional judgement because of bias, conflict of interest or undue influence<br>3. <strong>Professional competence and due care</strong> — to maintain skills and act diligently<br>4. <strong>Confidentiality</strong> — to respect confidentiality of information acquired<br>5. <strong>Professional behaviour</strong> — to comply with relevant laws and avoid conduct that discredits the profession</div>
+        </div>
+      </div>
+
+      <!-- SCENARIO -->
+      <div class="q-set">
+        <h3>🎯 Section C — Scenario-Based (Exam Style)</h3>
+        <div class="qc">
+          <div class="qnum">Scenario Q 1 — Ethics (5 marks)</div>
+          <div class="qtext"><strong>Scenario:</strong> Nadia is a Finance Manager at Selton Co. Her Finance Director has asked her to prepare a report that significantly overstates the value of certain assets. Nadia knows the valuations are not supportable. The Finance Director has told her that if she refuses, he will give her a poor performance review, affecting her year-end bonus.<br><br><em>Required: Identify and explain the ethical issues Nadia faces and advise what action she should take. (5 marks)</em></div>
+          <button class="show-btn" onclick="toggleAns(this)">Show Answer</button>
+          <div class="ans-reveal">
+            <strong>Issue 1 — Integrity (1 mark):</strong> Nadia is being asked to prepare a report she knows contains materially misleading information (overstated asset values). This directly threatens her principle of integrity.<br><br>
+            <strong>Issue 2 — Intimidation Threat (1 mark):</strong> The Finance Director's threat to give a poor performance review is an intimidation threat, designed to deter Nadia from acting objectively.<br><br>
+            <strong>Issue 3 — Self-Interest / Objectivity (1 mark):</strong> Her bonus creates a personal financial interest (self-interest threat) that may compromise her objective professional judgement.<br><br>
+            <strong>Recommended Actions (2 marks):</strong><br>
+            • Nadia should decline to prepare the report as presented — doing so would breach her ethical obligations<br>
+            • She should escalate to a more senior level — e.g., the Audit Committee or non-executive directors<br>
+            • If internal escalation fails, she may need to consider reporting to her professional body<br>
+            • Nadia should document her concerns and the steps taken to protect herself professionally
+          </div>
+        </div>
+        <div class="qc">
+          <div class="qnum">Scenario Q 2 — Ethics (5 marks)</div>
+          <div class="qtext"><strong>Scenario:</strong> Omar is an external auditor who has been engaged by Bright Co for 15 years. He has developed a very close friendship with the Finance Director. This year, the Finance Director has asked Omar to provide both the audit and the bookkeeping services. Omar's firm will earn 60% of its total annual fee income from Bright Co.<br><br><em>Required: Identify the ethical threats arising and explain their significance. (5 marks)</em></div>
+          <button class="show-btn" onclick="toggleAns(this)">Show Answer</button>
+          <div class="ans-reveal">
+            <strong>Familiarity Threat (1 mark):</strong> Omar's 15-year relationship and close friendship with the Finance Director creates a significant familiarity threat to his objectivity. He may be too sympathetic to the Finance Director's views.<br><br>
+            <strong>Self-Review Threat (1 mark):</strong> Providing both bookkeeping and audit services means Omar would be auditing records he himself prepared. This creates a self-review threat — he cannot objectively evaluate his own work.<br><br>
+            <strong>Self-Interest Threat (1 mark):</strong> Earning 60% of total fee income from one client creates a severe self-interest threat. Omar may fear losing this client and compromise his independence to retain the relationship.<br><br>
+            <strong>Actions required (2 marks):</strong><br>
+            • Bookkeeping and audit services should NOT be provided simultaneously — one must be declined<br>
+            • The 60% fee dependency is well above professional guidance thresholds — Omar should either resign from the engagement or significantly reduce the fee dependency<br>
+            • Consider rotating the audit partner given the length of the engagement<br>
+            • Document all threats and the firm's responses
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /quiz -->
+
+<!-- ══ FLASHCARDS PAGE ══ -->
+<div id="page-flashcards" class="page">
+  <section id="flash-section">
+    <div class="container">
+      <div class="sh dark"><h2>🃏 Interactive Flashcards</h2><p>Click to flip · Use arrows to navigate · Filter by topic</p></div>
+
+      <!-- PROGRESS -->
+      <div class="progress-wrap">
+        <span class="prog-label">Progress</span>
+        <div class="prog-bar-outer"><div class="prog-bar-inner" id="fc-prog-bar" style="width:0%"></div></div>
+        <span class="prog-pct" id="fc-prog-pct">0 / 0 seen</span>
+        <div id="fc-checks" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+      </div>
+
+      <div class="fc-controls" id="fc-filter"></div>
+
+      <div class="fc-stage">
+        <div class="fc-card-wrap" id="fc-card" onclick="flipCard()">
+          <div class="fc-inner">
+            <div class="fc-face fc-front"><div class="fc-lbl">Question</div><div class="fc-txt" id="fc-q"></div></div>
+            <div class="fc-face fc-back"><div class="fc-lbl" id="fc-cat-lbl">Answer</div><div class="fc-txt" id="fc-a"></div></div>
+          </div>
+        </div>
+        <div class="fc-hint">Click card to flip</div>
+        <div class="fc-nav">
+          <button onclick="fcNav(-1)" title="Previous">‹</button>
+          <span class="fc-counter" id="fc-counter"></span>
+          <button onclick="fcNav(1)" title="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /flashcards -->
+
+<!-- ══ REVISION PAGE ══ -->
+<div id="page-revision" class="page">
+  <div style="margin-top:48px;background:#fff;padding:52px 0">
+    <div class="container">
+      <div class="sh"><h2>⏱ Revision Sheets</h2><p>Choose your time window — from a 30-minute deep review to a 5-minute emergency refresh.</p></div>
+      <div class="rev-tabs">
+        <button class="rt active" onclick="switchRev('r30',this)">📚 30 Min Review</button>
+        <button class="rt" onclick="switchRev('r15',this)">⚡ 15 Min Sheet</button>
+        <button class="rt" onclick="switchRev('r5',this)">🚨 5 Min Emergency</button>
+      </div>
+
+      <div id="r30" class="rpanel active">
+        <div class="rev-card">
+          <div class="rev-title">30-Minute Revision — Chapter 1 Complete</div>
+          <div class="ri"><span class="rb">▶</span><div><strong>Why IFRS:</strong> Globalisation → need for single language → wider investment choice, efficient markets, lower cost of capital</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>IFRS Foundation:</strong> Not-for-profit, private sector. Oversees IASB (accounting) and ISSB (sustainability)</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>Structure hierarchy:</strong> Monitoring Board → Trustees → IASB/ISSB → Interpretations Committee / Advisory Council</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>Due process 4 steps:</strong> Advisory Committee → Discussion Paper → Exposure Draft (120 days) → Final Standard</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>3 due process principles:</strong> Transparency, Full &amp; Fair Consultation, Accountability</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>ISSB formed:</strong> 2021 | First standards: June 2023 | Effective: 1 January 2024</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>IFRS S1:</strong> ALL sustainability risks &amp; opportunities. 4 areas: G·S·R·M</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>IFRS S2:</strong> Climate-specific. Physical risks (acute/chronic) + Transition risks</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>5 ethical principles (I·O·P·C·P):</strong> Integrity, Objectivity, Professional Competence &amp; Due Care, Confidentiality, Professional Behaviour</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>5 threats (SSAFI):</strong> Self-interest, Self-review, Advocacy, Familiarity, Intimidation</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>Address threats:</strong> Identify → Evaluate → Address (eliminate / safeguards / decline)</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>Ethics in exam:</strong> ALWAYS apply to scenario. Q2 every exam. Max 5 marks. Don't just list!</div></div>
+          <div class="ri"><span class="rb">▶</span><div><strong>Key trap:</strong> IFRS Foundation CANNOT enforce standards — that's the national regulator's job</div></div>
+        </div>
+      </div>
+
+      <div id="r15" class="rpanel">
+        <div class="rev-card">
+          <div class="rev-title">⚡ 15-Minute Revision — Core Facts Only</div>
+          <div class="ri"><span class="rb">⭐</span><div><strong>IASB</strong> = independent body, develops IFRS standards. Under IFRS Foundation. No enforcement powers.</div></div>
+          <div class="ri"><span class="rb">⭐</span><div><strong>ISSB</strong> = formed 2021, sustainability standards, IFRS S1 &amp; S2 effective Jan 2024</div></div>
+          <div class="ri"><span class="rb">⭐</span><div><strong>Due Process:</strong> Advisory → Discussion Paper → ED (120 days) → Final Standard</div></div>
+          <div class="ri"><span class="rb">⭐</span><div><strong>S1 core areas: G·S·R·M</strong> — Governance, Strategy, Risk Mgmt, Metrics &amp; Targets</div></div>
+          <div class="ri"><span class="rb">⭐</span><div><strong>S2 risks:</strong> Physical (acute storms; chronic sea level rise) + Transition (shift to low-carbon economy)</div></div>
+          <div class="ri"><span class="rb">⭐</span><div><strong>Ethics principles: I·O·P·C·P</strong></div></div>
+          <div class="ri"><span class="rb">⭐</span><div><strong>Threats: SSAFI</strong></div></div>
+          <div class="ri"><span class="rb">⭐</span><div><strong>Ethics exam rule:</strong> Apply to scenario → name threat → name principle → use facts → suggest action</div></div>
+        </div>
+      </div>
+
+      <div id="r5" class="rpanel">
+        <div class="emergency">
+          <h3>🚨 5-MINUTE EMERGENCY SHEET</h3>
+          <div class="em-grid">
+            <div class="em-col">
+              <h4>5 Ethical Principles</h4>
+              <p>1. Integrity<br>2. Objectivity<br>3. Prof. Competence &amp; Due Care<br>4. Confidentiality<br>5. Prof. Behaviour<br><strong style="color:var(--gold)">→ I·O·P·C·P</strong></p>
+            </div>
+            <div class="em-col">
+              <h4>5 Threats</h4>
+              <p>1. Self-interest<br>2. Self-review<br>3. Advocacy<br>4. Familiarity<br>5. Intimidation<br><strong style="color:var(--gold)">→ SSAFI</strong></p>
+            </div>
+            <div class="em-col">
+              <h4>IFRS S1 Areas</h4>
+              <p>Governance<br>Strategy<br>Risk Management<br>Metrics &amp; Targets<br><strong style="color:var(--gold)">→ GSRM</strong></p>
+            </div>
+            <div class="em-col">
+              <h4>Critical Facts</h4>
+              <p>No enforcement by Foundation<br>ISSB formed 2021<br>S1 &amp; S2 effective Jan 2024<br>ED = 120 days comment<br><strong style="color:var(--red)">Ethics: APPLY not list!</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /revision -->
+
+<!-- ══ PASS GUIDE PAGE ══ -->
+<div id="page-passguide" class="page">
+  <div style="margin-top:48px;background:var(--navy);color:#fff;padding:52px 0;min-height:80vh">
+    <div class="container">
+      <div class="sh dark"><h2>🏆 Final Pass Guide</h2><p>Optimise your last hours before the exam.</p></div>
+      <div class="g3">
+        <div class="pc">
+          <h3>📅 One-Week Plan</h3>
+          <div class="pi"><span>1️⃣</span><div>Day 1–2: Read full chapter, make notes on IASB structure</div></div>
+          <div class="pi"><span>2️⃣</span><div>Day 3: Study IFRS S1 &amp; S2 in depth, memorise GSRM</div></div>
+          <div class="pi"><span>3️⃣</span><div>Day 4: Ethics deep dive — 5 principles + 5 threats + scenarios</div></div>
+          <div class="pi"><span>4️⃣</span><div>Day 5: Practice all MCQs and short questions</div></div>
+          <div class="pi"><span>5️⃣</span><div>Day 6: Do full ethics scenario, self-mark vs model answer</div></div>
+          <div class="pi"><span>6️⃣</span><div>Day 7: Flash cards only. 15-min revision sheet.</div></div>
+        </div>
+        <div class="pc">
+          <h3>📅 Three-Day Plan</h3>
+          <div class="pi"><span>🔴</span><div>Day 1: Ethics — memorise I·O·P·C·P and SSAFI. Practice 2 scenarios.</div></div>
+          <div class="pi"><span>🟠</span><div>Day 2: ISSB/S1/S2 — memorise GSRM, physical vs transition risks, key dates</div></div>
+          <div class="pi"><span>🟢</span><div>Day 3: IASB structure, due process. All flashcards. 5-min emergency sheet.</div></div>
+        </div>
+        <div class="pc">
+          <h3>🌙 Last-Night Plan</h3>
+          <div class="pi"><span>✅</span><div>Run through all flashcards once</div></div>
+          <div class="pi"><span>✅</span><div>Read the 5-minute emergency sheet twice</div></div>
+          <div class="pi"><span>✅</span><div>Write out I·O·P·C·P and SSAFI from memory</div></div>
+          <div class="pi"><span>✅</span><div>Write out GSRM for IFRS S1</div></div>
+          <div class="pi"><span>✅</span><div>Remind yourself: Ethics Q2 = Apply to facts, not list</div></div>
+          <div class="pi"><span>✅</span><div>Sleep early — recall requires rest!</div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;background:rgba(200,150,43,.15);border:1px solid var(--accent);border-radius:14px;padding:22px">
+        <div style="font-size:.95rem;font-weight:800;color:var(--gold);margin-bottom:12px">🎯 High vs Low Priority Areas</div>
+        <div class="g2">
+          <div>
+            <div style="color:#4ADE80;font-size:10px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">🟢 HIGH PRIORITY — Study First</div>
+            <ul style="color:#CBD5E1;font-size:13.5px;padding-left:16px;line-height:2">
+              <li>Ethics principles &amp; scenarios (Q2 EVERY exam)</li>
+              <li>IFRS S1 four headings (growing topic)</li>
+              <li>IFRS S2 physical vs transition risks</li>
+              <li>IFRS Foundation — no enforcement power</li>
+            </ul>
+          </div>
+          <div>
+            <div style="color:#FCA5A5;font-size:10px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">🔴 LOWER PRIORITY — Study Last</div>
+            <ul style="color:#CBD5E1;font-size:13.5px;padding-left:16px;line-height:2">
+              <li>Exact details of due process steps</li>
+              <li>Interpretations Committee procedures</li>
+              <li>Advantages vs disadvantages of IFRS</li>
+              <li>ISSB formation date / TCFD background</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /passguide -->
+
+<div class="divider"></div>
+<div style="background:var(--deep);color:#475569;text-align:center;padding:14px;font-size:11px">
+  DipIFR Chapter 1 — Interactive Learning App · Based on BPP Study Text · For exam preparation only
+</div>
+
+<script>
+// ─── PAGE NAVIGATION ───────────────────────────────────────────────
+const pages=['home','content','quiz','flashcards','revision','passguide'];
+function goPage(id){
+  pages.forEach(p=>{
+    const el=document.getElementById('page-'+p);
+    if(el) el.classList.toggle('active',p===id);
+  });
+  document.querySelectorAll('.nav-inner a[data-p]').forEach(a=>{
+    a.classList.toggle('active-nav',a.dataset.p===id);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='flashcards') renderFC();
+}
+function scrollToId(id){
+  setTimeout(()=>{
+    const el=document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  },100);
+}
+
+// ─── QUIZ ANSWERS ─────────────────────────────────────────────────
+function toggleAns(btn){
+  const r=btn.nextElementSibling;
+  r.classList.toggle('shown');
+  btn.textContent=r.classList.contains('shown')?'Hide Answer':'Show Answer';
+}
+
+// ─── MCQ DATA ─────────────────────────────────────────────────────
+const mcqs=[
+  {q:"Which of the following is NOT an objective of the IFRS Foundation?",opts:["To enforce IFRS Accounting Standards in most countries","To develop IFRS Accounting Standards through the IASB","To bring about convergence of accounting standards with IFRS","To take account of the financial reporting needs of SMEs"],ans:0,exp:"The IFRS Foundation has NO enforcement powers. Enforcement is a national regulatory matter. Options B, C, and D are all genuine objectives of the Foundation."},
+  {q:"Which body issues Interpretations that carry the same authority as IFRS Accounting Standards?",opts:["IASB","IFRS Advisory Council","IFRS Interpretations Committee","IFRS Foundation Trustees"],ans:2,exp:"The IFRS Interpretations Committee issues 'Interpretations' which carry the same authority as IFRS Accounting Standards. The IASB issues new standards; the Trustees handle governance; the Advisory Council provides advice only."},
+  {q:"Under IFRS S1, sustainability-related disclosures must be made under four headings. Which is NOT one of them?",opts:["Governance","Strategy","Risk Management","Regulatory Compliance"],ans:3,exp:"The four IFRS S1 headings are: Governance, Strategy, Risk Management, and Metrics & Targets. 'Regulatory Compliance' is not one of them."},
+  {q:"Ahmed, a Finance Director, is pressured by the CEO to change accounting policies to boost the share price. What threat does this represent?",opts:["Familiarity threat to professional behaviour","Intimidation threat to objectivity and integrity","Self-interest threat to professional competence","Self-review threat to confidentiality"],ans:1,exp:"The CEO is using authority to pressure Ahmed — a classic intimidation threat to objectivity and integrity. Ahmed cannot change policies unless justified under IAS 8."},
+  {q:"IFRS S2 was first effective for reporting periods beginning on or after:",opts:["1 January 2021","1 January 2023","1 January 2024","1 January 2025"],ans:2,exp:"Both IFRS S1 and IFRS S2 were issued in June 2023 and are effective for reporting periods beginning 1 January 2024. Earlier adoption is permitted, but S1 and S2 must be adopted together."},
+  {q:"What is the normal public comment period for an Exposure Draft?",opts:["30 days","60 days","90 days","120 days"],ans:3,exp:"The normal comment period for an Exposure Draft is 120 days. 30 days is exceptional. 90 days applies to Draft Interpretations from the Interpretations Committee."},
+  {q:"Which of the following best describes an 'Advocacy' threat to ethical compliance?",opts:["A financial interest that inappropriately influences judgement","Deterrence from acting objectively due to pressure","Promoting a client's position to the point where objectivity is compromised","Being too sympathetic due to a long-standing relationship"],ans:2,exp:"An advocacy threat arises when a professional accountant promotes a client's or employer's position so strongly that their objectivity is compromised. Options A = self-interest, B = intimidation, D = familiarity."},
+  {q:"The ISSB was formed in which year?",opts:["2019","2020","2021","2023"],ans:2,exp:"The ISSB (International Sustainability Standards Board) was formed in 2021 at COP26 in Glasgow. Its first two standards (IFRS S1 and S2) were issued in June 2023, effective from 1 January 2024."}
+];
+
+let mcqState=[];
+function buildMCQ(){
+  mcqState=mcqs.map(()=>({answered:false,selected:null}));
+  const c=document.getElementById('mcq-container');
+  c.innerHTML=mcqs.map((q,i)=>`
+    <div class="qc" id="mcq-${i}">
+      <div class="qnum">MCQ ${i+1}</div>
+      <div class="qtext">${q.q}</div>
+      ${q.opts.map((o,j)=>`<div class="opt" id="opt-${i}-${j}" onclick="pickOpt(${i},${j})">${String.fromCharCode(65+j)}. ${o}</div>`).join('')}
+      <button class="show-btn" onclick="toggleAns(this)" style="margin-top:8px">Show Explanation</button>
+      <div class="ans-reveal">✅ <strong>Answer: ${String.fromCharCode(65+q.ans)}</strong><br>${q.exp}</div>
+    </div>
+  `).join('');
+}
+function pickOpt(qi,oi){
+  if(mcqState[qi].answered) return;
+  mcqState[qi].answered=true;
+  mcqState[qi].selected=oi;
+  const q=mcqs[qi];
+  q.opts.forEach((_,j)=>{
+    const el=document.getElementById(`opt-${qi}-${j}`);
+    el.classList.add('locked');
+    if(j===q.ans) el.classList.add('correct');
+    else if(j===oi) el.classList.add('wrong');
+  });
+}
+
+// ─── FLASHCARD DATA ───────────────────────────────────────────────
+const cards=[
+  {cat:"IASB",q:"What is the role of the IFRS Foundation Monitoring Board?",a:"Provides public accountability for the Foundation. Consists of capital markets authorities. Creates a formal link between Trustees and public authorities."},
+  {cat:"IASB",q:"Can the IFRS Foundation enforce IFRS Standards?",a:"NO. The IFRS Foundation has no powers of enforcement. Enforcement is a matter for national regulators in each country."},
+  {cat:"IASB",q:"What is the normal public comment period for an Exposure Draft?",a:"120 days (normal). 30 days (exceptional circumstances). 90 days for Draft Interpretations from the Interpretations Committee."},
+  {cat:"IASB",q:"Name the four objectives of the IFRS Foundation.",a:"1. Develop IFRS Accounting Standards\n2. Promote use and application of those standards\n3. Bring about convergence of national standards with IFRS\n4. Take account of financial reporting needs of SMEs"},
+  {cat:"ISSB",q:"When was the ISSB formed and when did its first standards become effective?",a:"ISSB formed: 2021. First 2 standards (S1 & S2) issued: June 2023. Effective: 1 January 2024 (early adoption permitted if both applied together)."},
+  {cat:"ISSB",q:"What are the four core disclosure headings under IFRS S1?",a:"Governance · Strategy · Risk Management · Metrics & Targets\n\nRemember: 'Good Strategy Requires Measurement' (GSRM)"},
+  {cat:"ISSB",q:"What is the difference between IFRS S1 and IFRS S2?",a:"IFRS S1: ALL sustainability-related risks & opportunities (general).\nIFRS S2: Climate-related risks & opportunities specifically (builds on TCFD recommendations)."},
+  {cat:"ISSB",q:"Distinguish between physical risks and transition risks under IFRS S2.",a:"Physical risks: from climate change itself\n• Acute: storms, floods, drought\n• Chronic: sea level rise, biodiversity loss\n\nTransition risks: from moving to low-carbon economy\n• Carbon taxes, regulations, consumer behaviour shifts, stranded assets"},
+  {cat:"ISSB",q:"What are 'Dependencies' under IFRS S1?",a:"An entity's RELIANCE on stakeholders, society, economy and natural environment through the resources it uses. Examples: worker health, resource availability, consumer expectations."},
+  {cat:"Ethics",q:"State the 5 fundamental ethical principles (IESBA Code)",a:"I · O · P · C · P\n\n• Integrity\n• Objectivity\n• Professional Competence & Due Care\n• Confidentiality\n• Professional Behaviour\n\nMnemonic: 'In Our Profession, Clients Protect'"},
+  {cat:"Ethics",q:"Name the 5 types of threats to ethical compliance.",a:"SSAFI\n\n• Self-interest\n• Self-review\n• Advocacy\n• Familiarity\n• Intimidation\n\nMnemonic: 'Smart Students Avoid Failing Integrity'"},
+  {cat:"Ethics",q:"What are the 3 steps for addressing a threat to ethical principles?",a:"1. IDENTIFY the threat\n2. EVALUATE its significance\n3. ADDRESS by:\n   (a) Eliminating circumstances creating threats\n   (b) Applying safeguards\n   (c) Declining or ending the activity"},
+  {cat:"Ethics",q:"EXAM TRAP: A CEO changes accounting policy to increase profits. What ethical issues arise?",a:"Self-interest threat to objectivity (if linked to bonus).\n\nIAS 8 only allows policy changes if:\n• Required by a standard, OR\n• New policy provides more reliable/relevant information.\n\nChanging purely to boost profits = breach of INTEGRITY & OBJECTIVITY."},
+  {cat:"Ethics",q:"What is the difference between the 'intimidation' and 'familiarity' threats?",a:"Intimidation: Deterred from acting objectively by ACTUAL or PERCEIVED PRESSURE (e.g., CEO threatening dismissal).\n\nFamiliarity: Too SYMPATHETIC due to CLOSE RELATIONSHIP (e.g., not challenging a long-serving client's estimates).\n\nKey distinction: Pressure vs Sympathy."},
+];
+
+let fcIdx=0,fcFilter='All',fcSeen=new Set();
+const fcCats=['All',...[...new Set(cards.map(c=>c.cat))]];
+
+function renderFC(){
+  // Filter buttons
+  const fEl=document.getElementById('fc-filter');
+  if(!fEl.innerHTML){
+    fEl.innerHTML=fcCats.map(c=>`<button class="fc-btn${c===fcFilter?' active':''}" onclick="setFCFilter('${c}')">${c}</button>`).join('');
+  }
+  showFC();
+  updateFCProgress();
+}
+
+function filteredCards(){
+  return fcFilter==='All'?cards:cards.filter(c=>c.cat===fcFilter);
+}
+
+function showFC(){
+  const fc=filteredCards();
+  if(!fc.length) return;
+  if(fcIdx>=fc.length) fcIdx=0;
+  const card=fc[fcIdx];
+  document.getElementById('fc-q').textContent=card.q;
+  document.getElementById('fc-a').innerText=card.a;
+  document.getElementById('fc-cat-lbl').textContent=card.cat+' — Answer';
+  document.getElementById('fc-counter').textContent=`${fcIdx+1} / ${fc.length}`;
+  document.getElementById('fc-card').classList.remove('flipped');
+  fcSeen.add(cards.indexOf(card));
+  updateFCProgress();
+}
+
+function flipCard(){document.getElementById('fc-card').classList.toggle('flipped');}
+
+function fcNav(dir){
+  const fc=filteredCards();
+  fcIdx=(fcIdx+dir+fc.length)%fc.length;
+  showFC();
+}
+
+function setFCFilter(cat){
+  fcFilter=cat;fcIdx=0;
+  document.querySelectorAll('.fc-btn').forEach(b=>b.classList.toggle('active',b.textContent===cat));
+  showFC();
+}
+
+function updateFCProgress(){
+  const total=cards.length,seen=fcSeen.size;
+  const pct=total?Math.round(seen/total*100):0;
+  document.getElementById('fc-prog-bar').style.width=pct+'%';
+  document.getElementById('fc-prog-pct').textContent=`${seen} / ${total} seen`;
+}
+
+// ─── REVISION TABS ────────────────────────────────────────────────
+function switchRev(id,btn){
+  document.querySelectorAll('.rpanel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.rt').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────
+buildMCQ();
+</script>
+</body>
+</html>
