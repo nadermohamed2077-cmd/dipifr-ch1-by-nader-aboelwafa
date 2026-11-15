@@ -1,0 +1,135 @@
+# NAC Restaurant Cost & Management System — Phase 1 (complete)
+
+Multi-tenant, bilingual (Arabic RTL / English LTR) restaurant cost-control platform.
+This package contains the database foundation (PostgreSQL / Supabase) and the Next.js web app for authentication,
+company onboarding, branch management, and user/role management. See `HANDOVER.md` for architecture, status and pending work.
+
+```
+nac-phase1/
+├── README.md            ← this file (setup)
+├── HANDOVER.md          ← handover: structure, versions, status, limitations
+├── .env.example         ← environment variable names (copy of web/.env.example)
+├── supabase/
+│   ├── migrations/      ← 0001 … 0007, apply in order
+│   └── tests/           ← 00 stub (local only), 01 + 02 suites, run_local_tests.sh
+└── web/                 ← Next.js 15 application (package.json, package-lock.json inside)
+```
+
+## 1. Prerequisites
+Node.js 20+ (tested on 22), npm 10+, a Supabase project (or Supabase CLI), and for local DB tests PostgreSQL 15+ with `psql`.
+
+## 2. Database (Supabase)
+1. Create a project at supabase.com.
+2. Apply the migrations **in order** with the SQL editor (paste each file) or the CLI:
+   `supabase link --project-ref <ref>` then copy `supabase/migrations/*.sql` into your CLI project's `supabase/migrations/` and run `supabase db push`.
+   Order: `0001_foundation` → `0002_tenancy_core` → `0003_rls_policies` → `0004_seed_reference` → `0005_bootstrap` → `0006_hardening` → `0007_branch_rpc`.
+   Never edit an applied migration; add `0008_…` for changes.
+3. Do **not** run `tests/00_supabase_stub.sql` on Supabase.
+
+## 3. Authentication settings (Supabase dashboard → Authentication)
+- **URL Configuration**: Site URL = your deployed URL (local: `http://localhost:3000`). Redirect URLs: `<site>/auth/callback` (and `http://localhost:3000/auth/callback` for development).
+- **Providers**: Email enabled. Keep "Confirm email" on for production.
+- **SMTP**: configure a custom SMTP provider; Supabase's built-in mailer is heavily rate-limited and unsuitable for invitations.
+- Invitation e-mails are sent through Supabase Auth (`inviteUserByEmail`); customise the templates (Arabic/English) under Authentication → Email Templates.
+
+## 4. Web application
+```bash
+cd web
+cp .env.example .env.local      # fill in the values below; never commit .env.local
+npm ci                          # uses package-lock.json
+npm run dev                     # http://localhost:3000  → redirects to /ar
+```
+| Variable | Where from | Exposure |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | Project Settings → API → Project URL | public |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Project Settings → API → anon key | public |
+| `NEXT_PUBLIC_SITE_URL` | your site URL | public |
+| `SUPABASE_SERVICE_ROLE_KEY` | Project Settings → API → service_role | **server only — never expose, never prefix with NEXT_PUBLIC_** |
+
+First run: open `/ar/login` → create an account → confirm e-mail → `/onboarding` → create the company (this makes you its Owner).
+
+## 5. Build & deploy
+```bash
+npm run typecheck && npm run build && npm start     # production server on port 3000
+```
+Deploy to any Node host (Vercel, Netlify, Docker, VPS). Set the four environment variables in the host's secret store
+(the service-role key only as a server-side secret), and set `NEXT_PUBLIC_SITE_URL` to the production URL.
+
+## 6. Database tests (local PostgreSQL only)
+```bash
+createdb nac_test
+DATABASE_URL=postgresql://localhost/nac_test bash supabase/tests/run_local_tests.sh
+```
+Expected: `failed = 0`, `total = 85`. To re-verify on a real Supabase project, run `01_phase1_tests.sql` and `02_hardening_tests.sql`
+in a **disposable** project/branch (they create test users in `auth.users` and test data; the stub is not needed there).
+
+# Public (safe for the browser)
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR-PROJECT.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR-ANON-KEY
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+# SERVER ONLY - never expose. Used solely to resolve/invite auth users in the "invite user" server action.
+SUPABASE_SERVICE_ROLE_KEY=YOUR-SERVICE-ROLE-KEY
+
+node_modules
+.next
+.env.local
+.env
+*.tsbuildinfo
+
+# Handover — NAC Restaurant Cost & Management System, Phase 1
+
+## 1. Scope delivered
+Database foundation (multi-tenant isolation with RLS, roles/permissions, audit, invitations, branch rules) and the web app for
+sign-in, company onboarding, branch management, user/role management, company settings, Arabic/English with RTL/LTR.
+Phase 2+ (items, suppliers, inventory, recipes, costing, sales, break-even, reports) is **not started**. The full blueprint
+(ERD, formulas, roles matrix, roadmap) is the Claude Doc "NAC Restaurant Cost & Management System — Technical Blueprint v1.0".
+
+## 2. Folder structure
+```
+supabase/migrations/0001_foundation.sql      helper schema `app`, updated_at / immutable company_id / block-delete triggers
+                    0002_tenancy_core.sql    companies, branches, warehouses, profiles, roles, permissions, memberships, membership_branches, audit_log
+                    0003_rls_policies.sql    helper functions, guards, audit triggers, forced RLS + policies, grants
+                    0004_seed_reference.sql  8 roles, 9 permissions, role→permission mapping (reference data, not demo data)
+                    0005_bootstrap.sql       create_company() RPC, profile auto-creation on signup
+                    0006_hardening.sql       review corrections (see §6)
+                    0007_branch_rpc.sql      create_branch() atomic RPC (branch + main warehouse, runs as caller)
+supabase/tests/     00_supabase_stub.sql (local only) · 01_phase1_tests.sql (41) · 02_hardening_tests.sql (44) · run_local_tests.sh
+web/src/middleware.ts                        session refresh, locale redirect, anonymous redirect (not a security boundary)
+web/src/lib/                                 i18n + dictionaries (ar/en), supabase clients (server, admin), context (session, company, permissions)
+web/src/app/[locale]/login|onboarding        auth + company creation + invitations
+web/src/app/[locale]/(app)/                  shell, dashboard, branches (list/new/detail), users, settings
+web/src/app/auth/callback/route.ts           e-mail confirmation / invitation code exchange
+web/src/components/                          SubmitButton, LangSwitch, Flash
+```
+
+## 3. Technology and versions (as installed and tested)
+Next.js 15.5.29 · React 19.3.1 · TypeScript 5.9.3 (**stay on 5.x**: TypeScript 6 broke Next path aliases in testing) · Tailwind CSS 3.4.19 ·
+@supabase/ssr 0.12.7 · @supabase/supabase-js 2.119.0 · server-only 0.0.1 · Node 22 / npm 10 · PostgreSQL 16 (local tests); Supabase Postgres 15+.
+Exact versions are locked in `web/package-lock.json`. Fonts (Cairo, Inter) load from Google Fonts at runtime with system fallbacks.
+
+## 4. Migrations
+Apply 0001→0007 in order, once. Corrections go into new files (`0008_…`). Every new tenant table must: carry `company_id`, enable and FORCE RLS,
+and call `select app.attach_audit('public.<table>');`. `select * from app.audit_coverage();` must return no rows (the suite checks this).
+
+## 5. Permission-checking conventions for future modules
+- Company-level data: `app.has_perm(company_id, 'perm')` — only company-wide roles pass.
+- Branch-level data: `app.has_perm(company_id, 'perm', branch_id)` — branch-scoped roles need an assignment. Never pass NULL for branch tables.
+- Reads/reports: `app.can_see_branch(company_id, branch_id)` (works for inactive branches).
+- New operational documents: `app.can_operate(company_id, 'perm', branch_id)` (requires an ACTIVE branch).
+- Posted documents are never deleted: no DELETE policy; correct by reversal documents. Money `numeric(18,4)`, quantities `numeric(18,6)`.
+- New SECURITY DEFINER functions: `set search_path = ''`, schema-qualified names, `revoke execute … from public, anon`, grant only what is needed.
+
+## 6. What 0006 changed (from the independent review)
+Fail-closed branch scoping; profile visibility limited to active co-members for viewers with `user.view`; invitation flow
+(admins invite, invitee accepts); search_path and EXECUTE hardening; removal of the bootstrap GUC flag; inactive branches read-only with
+history still readable; audit reason/txid columns, `attach_audit`, `audit_coverage`, audit of permission-matrix changes; `public.user_id_by_email` (service role only).
+
+## 7. Known limitations and pending tasks
+- Web app compiled, typechecked and smoke-tested (routing, RTL/LTR, anonymous redirect) but **not run end to end against a real Supabase project**; no browser/UI tests.
+- Branch Managers have no user list yet (needs a branch-filtered view). Operational roles (Inventory Controller, Purchasing, Cashier) have no permissions until Phases 2–6 add them.
+- Invitation requires working SMTP and the service-role key; users cannot be added any other way by design.
+- Company `costing_method` and base currency can be edited now; they must be locked once inventory transactions exist (Phase 3).
+- Branch deactivation does not yet check for open/in-transit documents (Phase 3).
+- Not built: logo upload (Storage bucket + policies), permissions-matrix viewer, branch comparison, password reset page, MFA, rate limiting beyond Supabase defaults.
+- Local tests use a stub of Supabase's `auth` schema and assume the table owner bypasses RLS (true on Supabase's `postgres` role).
+- Dependencies were resolved from the registry at build time; run `npm audit` before production.
